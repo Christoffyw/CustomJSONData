@@ -391,11 +391,14 @@ MAKE_PAPER_HOOK_MATCH(BeatmapCallbacksController_ManualUpdateTranspile, &Beatmap
 
 
 MAKE_PAPER_HOOK_MATCH(GetBeatmapDataFromBeatmapSaveData, &BeatmapDataLoader::GetBeatmapDataFromBeatmapSaveData, BeatmapData *,
-                BeatmapSaveDataVersion3::BeatmapSaveData* beatmapSaveData,
-                float startBpm, bool loadingForDesignatedEnvironment,
-                ::GlobalNamespace::EnvironmentKeywords* environmentKeywords,
-                ::GlobalNamespace::EnvironmentLightGroups* environmentLightGroups,
-                ::GlobalNamespace::DefaultEnvironmentEvents* defaultEnvironmentEvents) {
+                      ::BeatmapSaveDataVersion3::BeatmapSaveData* beatmapSaveData,
+                      ::GlobalNamespace::BeatmapDifficulty beatmapDifficulty,
+                      float startBpm,
+                      bool loadingForDesignatedEnvironment,
+                      ::GlobalNamespace::EnvironmentKeywords* environmentKeywords,
+                      ::GlobalNamespace::EnvironmentLightGroups* environmentLightGroups,
+                      ::GlobalNamespace::DefaultEnvironmentEvents* defaultEnvironmentEvents,
+                      ::GlobalNamespace::PlayerSpecificSettings* playerSpecificSettings) {
 
     CJDLogger::Logger.fmtLog<LogLevel::DBG>("Parsing save data {} cached {}", fmt::ptr(beatmapSaveData), fmt::ptr(cachedSaveData));
     auto startTime = std::chrono::high_resolution_clock::now();
